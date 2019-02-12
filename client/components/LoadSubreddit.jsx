@@ -2,10 +2,47 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchPosts} from '../actions'
 
-const LoadSubreddit = ({dispatch}) => (
-  <button onClick={() => dispatch(fetchPosts('newzealand'))}>
-    Fetch Posts
-  </button>
-)
+class LoadSubreddit extends React.Component { 
+  constructor (props) {
+    super(props)
+    this.state = {
+      subReddit: 'newzealand'
+    }
+    this.state.subReddit = this.state.subReddit.bind(this)
+  }
 
-export default connect()(LoadSubreddit)
+  
+
+  render() {
+    
+   
+
+    return (
+      <div>
+        <input type="text" onChange={}></input>
+        <button onClick={() => this.props.fetchPostsFn}>
+          Fetch Posts
+        </button>
+      </div>
+    )
+  }
+
+}
+
+
+const mapStateToProps = (state) => {
+  return {
+
+  }
+}
+
+const mapDispatchToProps = (disaptch) => {
+  return {
+    fetchPostsFn: () => dispatch(fetchPosts(this.state.subReddit))
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoadSubreddit)

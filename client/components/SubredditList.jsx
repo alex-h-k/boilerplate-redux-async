@@ -6,13 +6,17 @@ import Post from './Post'
 const Subreddit = ({subreddits}) => (
   <div>
     {subreddits.map((post, i) =>
-      <Post
-        key={i}
+     <div key={i}>
+        <Post
         title={post.title}
+        summary={post.selftext}
       />
+     </div>
+   
     )}
   </div>
 )
+
 
 const mapStateToProps = (state) => {
   return {
